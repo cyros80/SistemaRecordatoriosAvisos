@@ -1,0 +1,132 @@
+{%extends 'pendientes/base.html'%}
+{% load user_tags%}
+<body>
+    {%block content%} 
+
+
+{% if request.user|has_group:"Planeacion" %}
+<h6>{{user.first_name}}, Bienvenido </h6>
+{% endif %}    
+<h3>Pendientes Subdireccion Planeacion</h3>
+
+
+
+  <br>
+  <div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Peticiones Pendientes
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+            <thead>
+              <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Problema</th>
+                <th scope="col">Asignacion</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            {%for peticionesp in peticionesp %}
+            <tbody>
+              <tr>
+                <th scope="col">{{peticionesp.id}}</th>
+                <td scope="col">{{peticionesp.Area}}</td>
+                <td scope="col">{{peticionesp.tarea}}</td>
+                <td scope="col">{{peticionesp.created}}</td>
+                <td scope="col">{{peticionesp.estado}}</td>
+                <td class="text-center">
+                  <a class="btn btn-warning" href="{%url 'editar' peticionesp.id%}">Editar</a>
+                </td>
+                
+              </tr>
+              
+            </tbody>
+            {%endfor%}
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Peticiones En Proceso
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+            <thead>
+              <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Problema</th>
+                <th scope="col">Asignacion</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            {%for peticionese in peticionese %}
+            <tbody>
+              <tr>
+                <th scope="col">{{peticionese.id}}</th>
+                <td scope="col">{{peticionese.Area}}</td>
+                <td scope="col">{{peticionese.tarea}}</td>
+                <td scope="col">{{peticionese.created}}</td>
+                <td scope="col">{{peticionese.estado}}</td>
+                <td class="text-center">
+                  <a class="btn btn-warning" href="{%url 'editar2' peticionese.id%}">Editar</a>
+                </td>
+                
+              </tr>
+              
+            </tbody>
+            {%endfor%}
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Peticiones Finalizadas 
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table class="table" class="table" style="background-color: #ffff; border-radius: 2dvh;">
+            <thead>
+              <tr>
+                <th scope="col">Folio</th>
+                <th scope="col">Equipo</th>
+                <th scope="col">Problema</th>
+                <th scope="col">Asignacion</th>
+                <th scope="col">Estado</th>
+              </tr>
+            </thead>
+            {%for peticionesf in peticionesf %}
+            <tbody>
+              <tr>
+                <th scope="col">{{peticionesf.id}}</th>
+                <td scope="col">{{peticionesf.Area}}</td>
+                <td scope="col">{{peticionesf.tarea}}</td>
+                <td scope="col">{{peticionesf.created}}</td>
+                <td scope="col">{{peticionesf.estado}}</td>
+                
+              </tr>
+              
+            </tbody>
+            {%endfor%}
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+{%endblock%}
+</body>
+</html>

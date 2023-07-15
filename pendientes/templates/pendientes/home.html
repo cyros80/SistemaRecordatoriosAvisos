@@ -1,0 +1,46 @@
+{%extends 'pendientes/base.html'%}
+
+{%load crispy_forms_tags%}
+
+
+{%block content%} 
+<h3 class="text-center">Solicitud</h3>
+{%if request.user.is_authenticated%}
+<hr>
+
+<h4>
+    {{user.first_name}}, Bienvenido 
+</h4>
+
+
+
+{%endif%}
+
+<body>
+    <form action="" method="POST">
+        {%csrf_token%}
+        {%if 'ok' in request.GET%}
+        <div class="alert alert-success mt-5" role="alert">
+            <strong>Tarea Registrada Exitosamente</strong>
+        </div>
+
+        {%endif%}
+        {%if 'error' in request.GET%}
+
+         <div class="alert alert-danger mt-5" role="alert">
+            <strong>Error al registrar</strong>
+        </div>
+
+        {%endif%}
+        
+        {{form|crispy}}
+
+        <input class="btn btn-primary" type="submit" value="Enviar">
+
+        
+
+    </form>
+</body>
+
+
+{%endblock%}

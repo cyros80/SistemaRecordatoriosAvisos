@@ -1,0 +1,81 @@
+{%extends 'pendientes/base.html'%}
+
+{%load crispy_forms_tags%}
+
+
+{%block content%} 
+<h3 class="text-center">Pendiente</h3>
+
+
+<body>
+  <div class="container">
+    <form class="form-horizontal" action="/editarPendiente/" method="post" role="form">
+      {%csrf_token%}
+     <input type="hidden" name="id" value="{{pendiente.id}}">
+     <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>Area:</p>
+      </blockquote>
+    </figure>
+
+
+
+<input type="text" name="Area" class="form-control" value="{{pendiente.Area}}" readonly>
+
+
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Tarea:</p>
+  </blockquote>
+</figure>
+
+
+
+<div class="form-group">
+  <textarea class="form-control" id="exampleFormControlTextarea1" readonly name="tarea" rows="3">{{pendiente.tarea}}</textarea>
+</div>
+  
+<br>
+  <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>Estado de la Tarea:</p>
+      </blockquote>
+    </figure>
+    <select name="estado" class="form-select">
+        <option selected>{{pendiente.estado}}</option>
+
+        <option value="Finalizada">Finalizada</option>
+        
+      </select>
+      <br>
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Porcentaje:</p>
+  </blockquote>
+</figure>
+<select name="porcentaje" class="form-select">
+<option selected>{{pendiente.porcentaje}}</option>
+
+
+<option value="50%">50%</option>
+<option value="75%">75%</option>
+
+</select>
+      
+ 
+
+        <br>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+        </div>
+        
+        
+
+        
+
+  </form>
+  </div>
+</body>
+
+
+{%endblock%}

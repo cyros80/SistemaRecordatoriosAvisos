@@ -1,0 +1,53 @@
+{%extends 'pendientes/base.html'%}
+
+{%load crispy_forms_tags%}
+
+
+{%block content%} 
+<h3 class="text-center">Pendiente</h3>
+
+
+<body>
+  <div class="container">
+    <form class="form-horizontal" action="/editarPendiente2/" method="post" role="form">
+      {%csrf_token%}
+     <input type="hidden" name="id" value="{{pendientes.id}}">
+     <figure class="text-center">
+      <blockquote class="blockquote">
+        <p>Area:</p>
+      </blockquote>
+    </figure>
+
+<select name="Area" class="form-select">
+  <option selected>{{pendientes.Area}}</option>
+  <option value="SubAcademica">SubAcademica</option>
+  <option value="SubAdministrativa">SubAdministrativa</option>
+  <option value="SubPlaneacion">SubPlaneacion</option>
+  
+</select>
+
+
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <p>Tarea:</p>
+  </blockquote>
+</figure>
+
+<div class="form-floating">
+  <textarea class="form-control" name="tarea"  placeholder="Leave a comment here" cols="4" rows="2" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">{{pendientes.tarea}}</label>
+</div>
+  
+<br>
+
+
+        <br>
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+        </div>
+  </form>
+  </div>
+</body>
+
+
+{%endblock%}
